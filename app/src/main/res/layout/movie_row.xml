@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<data>
+		<variable
+			name="view" type="com.example.vtarantik.favouritemovies.view.IMoviesView" />
+		<variable
+			name="data" type="com.example.vtarantik.favouritemovies.entity.Movie" />
+	</data>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="?android:attr/listPreferredItemHeight"
+		android:orientation="horizontal"
+		android:onClick="@{() -> view.onItemClick(data)}">
+
+		<ImageView
+			android:layout_width="wrap_content" android:layout_height="match_parent"
+			app:imageUrl="@{data.poster}" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:textStyle="bold"
+			android:padding="@dimen/global_padding_small"
+			android:textSize="@dimen/row_textsize"
+			android:text="@{data.title}"/>
+
+	</LinearLayout>
+</layout>

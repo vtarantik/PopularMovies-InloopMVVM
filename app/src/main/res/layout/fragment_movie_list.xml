@@ -1,0 +1,43 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+		<import type="com.example.vtarantik.favouritemovies.utility.BindingUtility.RecyclerLayout" />
+
+		<import type="com.example.vtarantik.favouritemovies.utility.BindingUtility.RecyclerDecoration" />
+
+		<variable
+			name="view" type="com.example.vtarantik.favouritemovies.view.IMoviesView"/>
+		<variable
+			name="viewModel"
+			type="com.example.vtarantik.favouritemovies.viewmodel.MovieViewModel" />
+
+		<variable
+			name="stateController"
+			type="cz.kinst.jakub.view.StatefulLayout.StateController"/>
+	</data>
+
+	<cz.kinst.jakub.view.StatefulLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical"
+		app:stateController="@{stateController}">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<android.support.v7.widget.RecyclerView
+				android:id="@+id/movie_list"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				app:recyclerLayout="@{RecyclerLayout.LINEAR_VERTICAL}"
+				app:recyclerDecoration="@{RecyclerDecoration.LINEAR_DIVIDER}">
+
+			</android.support.v7.widget.RecyclerView>
+		</FrameLayout>
+
+	</cz.kinst.jakub.view.StatefulLayout>
+</layout>

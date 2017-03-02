@@ -34,7 +34,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
-				android:padding="@dimen/global_padding_small">
+				android:padding="@dimen/global_spacing_single">
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
-				android:padding="@dimen/global_padding_small">
+				android:padding="@dimen/global_spacing_single">
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:textColor="@android:color/black"
-					android:padding="@dimen/global_padding_small"
+					android:padding="@dimen/global_spacing_single"
 					android:text="@{viewModel.movie.overview}"/>
 			</ScrollView>
 

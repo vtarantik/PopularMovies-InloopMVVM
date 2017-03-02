@@ -72,8 +72,10 @@ dependencies {
 	compile 'com.squareup.picasso:picasso:2.5.2'
 
 
+	//ViewModel
 	compile 'eu.inloop:androidviewmodel:1.2.3'
 
-	compile 'cz.kinst.jakub:android-stateful-layout-simple:2.0.3'
+	//Statefull layout
+	compile 'cz.kinst.jakub:android-stateful-layout-simple:2.0.4'
 
 }

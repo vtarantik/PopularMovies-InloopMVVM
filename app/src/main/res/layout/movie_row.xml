@@ -13,20 +13,38 @@
 		android:layout_width="match_parent"
 		android:layout_height="?android:attr/listPreferredItemHeight"
 		android:orientation="horizontal"
+		android:layout_marginTop="@dimen/global_spacing_single"
+		android:layout_marginBottom="@dimen/global_spacing_single"
 		android:onClick="@{() -> view.onItemClick(data)}">
 
 		<ImageView
-			android:layout_width="wrap_content" android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:padding="@dimen/global_spacing_half"
 			app:imageUrl="@{data.poster}" />
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_vertical"
-			android:textStyle="bold"
-			android:padding="@dimen/global_padding_small"
-			android:textSize="@dimen/row_textsize"
-			android:text="@{data.title}"/>
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:textStyle="bold"
+				android:gravity="center_vertical"
+				android:textSize="@dimen/global_textsize_18"
+				android:text="@{data.title}" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:textSize="@dimen/global_textsize_14"
+				android:text='@{data.rating+"/10"}' />
+		</LinearLayout>
 
 	</LinearLayout>
 </layout>

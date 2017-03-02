@@ -1,6 +1,6 @@
 package com.example.vtarantik.favouritemovies.dagger;
 
-import com.example.vtarantik.favouritemovies.viewmodel.MovieViewModel;
+import com.example.vtarantik.favouritemovies.viewmodel.MovieListViewModel;
 
 import javax.inject.Singleton;
 
@@ -15,5 +15,5 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
 
-	void inject(MovieViewModel moviesViewModel);
+	void inject(MovieListViewModel moviesViewModel);
 }

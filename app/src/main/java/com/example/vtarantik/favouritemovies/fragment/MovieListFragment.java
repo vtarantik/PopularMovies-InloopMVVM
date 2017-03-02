@@ -13,7 +13,7 @@ import com.example.vtarantik.favouritemovies.databinding.CustomGenericBinding;
 import com.example.vtarantik.favouritemovies.databinding.FragmentMovieListBinding;
 import com.example.vtarantik.favouritemovies.entity.Movie;
 import com.example.vtarantik.favouritemovies.view.IMoviesView;
-import com.example.vtarantik.favouritemovies.viewmodel.MovieViewModel;
+import com.example.vtarantik.favouritemovies.viewmodel.MovieListViewModel;
 
 import cz.kinst.jakub.view.StatefulLayout;
 import eu.inloop.viewmodel.binding.ViewModelBaseBindingFragment;
@@ -24,47 +24,47 @@ import eu.inloop.viewmodel.binding.ViewModelBindingConfig;
  * Created by strv on 03/02/2017.
  */
 
-public class MovieFragment extends ViewModelBaseBindingFragment<IMoviesView, MovieViewModel, FragmentMovieListBinding> implements IMoviesView {
-	private static final String TAG = MovieFragment.class.getSimpleName();
+public class MovieListFragment extends ViewModelBaseBindingFragment<IMoviesView, MovieListViewModel, FragmentMovieListBinding> implements IMoviesView {
+	private static final String TAG = MovieListFragment.class.getSimpleName();
 
-	public static final String STATE_1 = "state_1";
-	public static final String STATE_2 = "state_2";
-	public static final String STATE_3 = "state_3";
+//	public static final String STATE_1 = "state_1";
+//	public static final String STATE_2 = "state_2";
+//	public static final String STATE_3 = "state_3";
 
 	private MoviesAdapter mMoviesAdapter;
 
-	private StatefulLayout.StateController mStateController;
+//	private StatefulLayout.StateController mStateController;
 
 
-	public MovieFragment() {
+	public MovieListFragment() {
 
 	}
 
 
 	@Nullable
 	@Override
-	public Class<MovieViewModel> getViewModelClass() {
-		return MovieViewModel.class;
+	public Class<MovieListViewModel> getViewModelClass() {
+		return MovieListViewModel.class;
 	}
 
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		CustomGenericBinding state1 = CustomGenericBinding.inflate(getActivity().getLayoutInflater());
-		state1.setContent("State 1");
-		CustomGenericBinding state2 = CustomGenericBinding.inflate(getActivity().getLayoutInflater());
-		state2.setContent("State 2");
-		CustomGenericBinding state3 = CustomGenericBinding.inflate(getActivity().getLayoutInflater());
-		state3.setContent("State 3");
-
-		mStateController = StatefulLayout.StateController.create()
-				.withState(STATE_1, state1.getRoot())
-				.withState(STATE_2, state2.getRoot())
-				.withState(STATE_3, state3.getRoot())
-				.build();
-		getBinding().setStateController(mStateController);
+//
+//		CustomGenericBinding state1 = CustomGenericBinding.inflate(getActivity().getLayoutInflater());
+//		state1.setContent("State 1");
+//		CustomGenericBinding state2 = CustomGenericBinding.inflate(getActivity().getLayoutInflater());
+//		state2.setContent("State 2");
+//		CustomGenericBinding state3 = CustomGenericBinding.inflate(getActivity().getLayoutInflater());
+//		state3.setContent("State 3");
+//
+//		mStateController = StatefulLayout.StateController.create()
+//				.withState(STATE_1, state1.getRoot())
+//				.withState(STATE_2, state2.getRoot())
+//				.withState(STATE_3, state3.getRoot())
+//				.build();
+//		getBinding().setStateController(mStateController);
 
 	}
 
@@ -76,7 +76,7 @@ public class MovieFragment extends ViewModelBaseBindingFragment<IMoviesView, Mov
 
 		setModelView(this);
 
-		mStateController.setState(StatefulLayout.State.CONTENT);
+//		mStateController.setState(StatefulLayout.State.CONTENT);
 
 	}
 
@@ -107,13 +107,19 @@ public class MovieFragment extends ViewModelBaseBindingFragment<IMoviesView, Mov
 
 	@Override
 	public void showProgress() {
-		mStateController.setState(STATE_2);
+
 	}
+
+//
+//	@Override
+//	public void showProgress() {
+//		mStateController.setState(STATE_2);
+//	}
 
 
 	@Override
 	public void showData() {
-		mStateController.setState(StatefulLayout.State.CONTENT);
+//		mStateController.setState(StatefulLayout.State.CONTENT);
 		mMoviesAdapter.notifyDataSetChanged();
 	}
 

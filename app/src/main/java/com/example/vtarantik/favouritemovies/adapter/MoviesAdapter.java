@@ -7,7 +7,7 @@ package com.example.vtarantik.favouritemovies.adapter;
 import com.example.vtarantik.favouritemovies.R;
 import com.example.vtarantik.favouritemovies.databinding.MovieRowBinding;
 import com.example.vtarantik.favouritemovies.view.IMoviesView;
-import com.example.vtarantik.favouritemovies.viewmodel.MovieViewModel;
+import com.example.vtarantik.favouritemovies.viewmodel.MovieListViewModel;
 
 
 /**
@@ -18,7 +18,7 @@ import com.example.vtarantik.favouritemovies.viewmodel.MovieViewModel;
  */
 public class MoviesAdapter extends SimpleDataBoundAdapter<MovieRowBinding> {
 
-	public MoviesAdapter(IMoviesView view, MovieViewModel viewModel) {
+	public MoviesAdapter(IMoviesView view, MovieListViewModel viewModel) {
 		super(R.layout.movie_row, view, viewModel.movies);
 	}
 

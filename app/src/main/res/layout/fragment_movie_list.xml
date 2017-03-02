@@ -10,19 +10,19 @@
 			name="view" type="com.example.vtarantik.favouritemovies.view.IMoviesView"/>
 		<variable
 			name="viewModel"
-			type="com.example.vtarantik.favouritemovies.viewmodel.MovieViewModel" />
+			type="com.example.vtarantik.favouritemovies.viewmodel.MovieListViewModel" />
 
-		<variable
-			name="stateController"
-			type="cz.kinst.jakub.view.StatefulLayout.StateController"/>
+		<!--<variable-->
+			<!--name="stateController"-->
+			<!--type="cz.kinst.jakub.view.StatefulLayout.StateController"/>-->
 	</data>
 
-	<cz.kinst.jakub.view.StatefulLayout
+	<com.example.vtarantik.favouritemovies.utility.LCEStatefulLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:gravity="center"
 		android:orientation="vertical"
-		app:stateController="@{stateController}">
+		app:stateController="@{viewModel.stateController}">
 
 		<FrameLayout
 			android:layout_width="match_parent"
@@ -39,5 +39,5 @@
 			</android.support.v7.widget.RecyclerView>
 		</FrameLayout>
 
-	</cz.kinst.jakub.view.StatefulLayout>
+	</com.example.vtarantik.favouritemovies.utility.LCEStatefulLayout>
 </layout>

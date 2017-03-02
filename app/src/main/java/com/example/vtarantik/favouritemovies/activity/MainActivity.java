@@ -2,14 +2,9 @@ package com.example.vtarantik.favouritemovies.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.vtarantik.favouritemovies.R;
-import com.example.vtarantik.favouritemovies.fragment.MovieFragment;
 
-import eu.inloop.viewmodel.IViewModelProvider;
-import eu.inloop.viewmodel.ViewModelProvider;
-import eu.inloop.viewmodel.base.ViewModelBaseActivity;
 import eu.inloop.viewmodel.base.ViewModelBaseEmptyActivity;
 
 

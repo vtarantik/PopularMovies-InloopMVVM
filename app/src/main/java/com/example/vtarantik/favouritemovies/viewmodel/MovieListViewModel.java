@@ -1,21 +1,26 @@
 package com.example.vtarantik.favouritemovies.viewmodel;
 
 import android.databinding.ObservableArrayList;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.LayoutInflater;
 
 import com.example.vtarantik.favouritemovies.FavouriteMoviesApp;
+import com.example.vtarantik.favouritemovies.R;
+import com.example.vtarantik.favouritemovies.databinding.CustomGenericBinding;
 import com.example.vtarantik.favouritemovies.entity.Movie;
 import com.example.vtarantik.favouritemovies.interactor.IApiInteractor;
+import com.example.vtarantik.favouritemovies.utility.LCEStatefulLayout;
 import com.example.vtarantik.favouritemovies.view.IMoviesView;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import cz.kinst.jakub.view.SimpleStatefulLayout;
+import cz.kinst.jakub.view.StatefulLayout;
 import eu.inloop.viewmodel.AbstractViewModel;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -25,10 +30,12 @@ import rx.schedulers.Schedulers;
  * Created by strv on 03/02/2017.
  */
 
-public class MovieViewModel extends AbstractViewModel<IMoviesView> {
-	private static final String TAG = MovieViewModel.class.getSimpleName();
+public class MovieListViewModel extends AbstractViewModel<IMoviesView> {
+	private static final String TAG = MovieListViewModel.class.getSimpleName();
 
 	public final ObservableArrayList<Movie> movies = new ObservableArrayList<>();
+
+	public SimpleStatefulLayout.StateController stateController;
 
 	@Inject
 	IApiInteractor mIApiInteractor;
@@ -40,6 +47,8 @@ public class MovieViewModel extends AbstractViewModel<IMoviesView> {
 
 		super.onCreate(arguments, savedInstanceState);
 
+		stateController = LCEStatefulLayout.StateController.create()
+				.build();
 	}
 
 
@@ -48,10 +57,6 @@ public class MovieViewModel extends AbstractViewModel<IMoviesView> {
 		Log.d(TAG, "onStart");
 		if(movies.isEmpty()) {
 
-
-			if(getView() != null) {
-				getView().showProgress();
-			}
 			getPopularMoviesList();
 		}
 	}
@@ -66,14 +71,18 @@ public class MovieViewModel extends AbstractViewModel<IMoviesView> {
 
 	public void getPopularMoviesList() {
 
+		stateController.setState(LCEStatefulLayout.State.PROGRESS);
+
 		mIApiInteractor.getMovies()
 				.subscribeOn(Schedulers.newThread())
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(movieResponse -> {
 
-					if(movieResponse.getMovies() != null && !movieResponse.getMovies ().isEmpty()) {
+					if(movieResponse.getMovies() != null && !movieResponse.getMovies().isEmpty()) {
+						stateController.setState(LCEStatefulLayout.State.CONTENT);
 						updateData(movieResponse.getMovies());
 					} else {
+						stateController.setState(LCEStatefulLayout.State.EMPTY);
 						if(getView() != null) {
 							getView().showEmpty();
 						}
